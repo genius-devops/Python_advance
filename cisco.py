@@ -639,3 +639,460 @@ while True:
     if guess_word == secret_word:
         print("You've successfully left the loop.")
         break
+
+
+# ask the user to enter a word;
+# use user_word = user_word.upper() to convert the word entered by the user to upper case; we'll talk about string methods and the upper() method very soon – don't worry;
+# use conditional execution and the continue statement to "eat" the following vowels A, E, I, O, U from the inputted word;
+# print the uneaten letters to the screen, each one of them on a separate line.
+# Test your program with the data we've provided for you.
+
+# solution
+
+
+
+
+
+# conventionally when iteration take place it also hold the last value after execusion
+i = 1
+while i < 5:
+    print(i)
+    i += 1
+else:
+    print("else:", i)  # the i is 5
+
+# Example 1
+word = "Python"
+for letter in word:
+    print(letter, end="*")
+
+# Example 2
+for i in range(1, 10):
+    if i % 2 == 0:
+        print(i)        # only even number will be printed
+
+
+text = "pyxpyxpyx"
+for letter in text:
+    if letter == "x":
+        continue
+    print(letter, end="")       # eat will x from the text variable
+
+n = 0
+
+while n != 3:
+    print(n)
+    n += 1
+else:
+    print(n, "else")
+
+print()
+
+for i in range(0, 3):
+    print(i)
+else:
+    print(i, "else")
+
+for i in range(3):
+    print(i, end=" ")  # Outputs: 0 1 2
+
+for i in range(6, 1, -2):
+    print(i, end=" ")  # Outputs: 6, 4, 2
+
+for i in range(0, 11):
+    if i % 2 != 0:
+        print(i)        # odd number will be printed
+
+for i in range(0, 11):
+    if i % 2:
+        print(i)        # same as above
+
+# alternatively
+for i in range(11):
+    if i % 2:
+        print(i)
+
+x = 1
+while x < 11:
+    if x % 2 != 0:
+        print(x)
+    x += 1
+
+
+# Question 3: Create a program with a for loop and a break statement. The program should iterate over characters in an email address, exit the loop when it reaches the @ symbol, and print the part before @ on one line. Use the skeleton below:
+for ch in "john.smith@pythoninstitute.org":
+    if ch == "@":
+        break
+    print(ch, end="")
+
+# Question 4: Create a program with a for loop and a continue statement. The program should iterate over a string of digits, replace each 0 with x, and print the modified string to the screen. Use the skeleton below:
+for digit in "0165031806510":
+    if digit == "0":
+        print("x", end="")
+        continue
+    print(digit, end="")
+
+n = 3
+
+while n > 0:
+    print(n + 1)  # 4 3 2
+    n -= 1
+else:
+    print(n)  # 0
+
+for i in range(0, 6, 3):
+    print(i)   # 0, 3
+
+
+# the statement below print all True
+# Example 1:
+var = 1
+print(var > 0)
+print(not (var <= 0))
+
+
+# Example 2:
+print(var != 0)
+print(not (var == 0))
+
+# bitwise operators
+# & (ampersand) ‒ bitwise conjunction;
+# | (bar) ‒ bitwise disjunction;
+# ~ (tilde) ‒ bitwise negation;
+# ^ (caret) ‒ bitwise exclusive or (xor).
+
+# x = x & y	x &= y
+# x = x | y	x |= y
+# x = x ^ y	x ^= y
+
+#
+# Priority	Operator
+# 1	~, +, -	unary
+# 2	**
+# 3	*, /, //, %
+# 4	+, -	binary
+# 5	<<, >>
+# 6	<, <=, >, >=
+# 7	==, !=
+# 8	&
+# 9	|
+# 10	=, +=, -=, *=, /=, %=, &=, ^=, |=, >>=, <<=
+#
+# 1. Python supports the following logical operators:
+#
+# and → if both operands are true, the condition is true, e.g., (True and True) is True,
+# or → if any of the operands are true, the condition is true, e.g., (True or False) is True,
+# not → returns false if the result is true, and returns true if the result is false, e.g., not True is False.
+# 2. You can use bitwise operators to manipulate single bits of data. The following sample data:
+#
+# x = 15, which is 0000 1111 in binary,
+# y = 16, which is 0001 0000 in binary.
+# will be used to illustrate the meaning of bitwise operators in Python. Analyze the examples below:
+#
+# & does a bitwise and, e.g., x & y = 0, which is 0000 0000 in binary,
+# | does a bitwise or, e.g., x | y = 31, which is 0001 1111 in binary,
+# ˜  does a bitwise not, e.g., ˜ x = 240*, which is 1111 0000 in binary,
+# ^ does a bitwise xor, e.g., x ^ y = 31, which is 0001 1111 in binary,
+# >> does a bitwise right shift, e.g., y >> 1 = 8, which is 0000 1000 in binary,
+# << does a bitwise left shift, e.g., y << 3 = , which is 1000 0000 in binary.
+# * -16 (decimal from signed 2's complement) -- read more about the Two's complement operation.
+
+x = 1
+y = 0
+
+z = ((x == y) and (x == y)) or not(x == y)
+print(not(z))   # false
+
+x = 4
+y = 1
+
+a = x & y
+b = x | y
+c = ~x  # tricky!
+d = x ^ 5
+e = x >> 2
+f = x << 2
+
+print(a, b, c, d, e, f)    # 0 5 -5 1 1 16 respectively
+
+numbers = [10, 5, 7, 2, 1]
+print("Original list contents:", numbers)  # Printing original list contents.
+
+numbers[0] = 111
+print("\nPrevious list contents:", numbers)  # Printing previous list contents.
+
+numbers[1] = numbers[4]  # Copying value of the fifth element to the second.
+print("New list contents:", numbers)  # Printing current list contents.
+
+hat_list = [1, 2, 3, 4, 5]  # This is an existing list of numbers hidden in the hat.
+
+# Step 1: write a line of code that prompts the user
+n = int(input("enter a number: "))
+# to replace the middle number with an integer number entered by the user.
+hat_list[3] = n
+
+# Step 2: write a line of code that removes the last element from the list.
+del hat_list[4]
+
+# Step 3: write a line of code that prints the length of the existing list.
+len(hat_list)
+print(hat_list)
+
+numbers = [111, 7, 2, 1]
+print(len(numbers))
+print(numbers)
+
+###
+
+numbers.append(4)
+
+print(len(numbers))
+print(numbers)
+
+###
+
+numbers.insert(0, 222)      # list.insert(location, value)
+print(len(numbers))
+print(numbers)
+
+#
+my_list = []  # Creating an empty list.
+
+for i in range(5):
+    my_list.append(i + 1)
+
+print(my_list)
+
+
+my_list = []  # Creating an empty list.
+
+for i in range(5):
+    my_list.insert(0, i + 1)
+
+print(my_list)# output: [5, 4, 3, 2, 1]   You should get the same sequence, but in reverse order (this is the merit of using the insert() method).
+
+
+# to calculate the sum of all the values stored in the my_list list.
+# You need a variable whose sum will be stored and initially assigned a value of 0 ‒ its name will be total. (Note: we're not going to name it sum as Python uses the same name for one of its built-in functions: sum(). Using the same name would generally be considered bad practice.) Then you add to it all the elements of the list using the for loop. Take a look at the snippet in the editor.
+
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in range(len(my_list)):
+    total += my_list[i]
+
+print(total)  # output: 27
+
+
+# alternatively
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in my_list:
+    total += i
+
+print(total)  # output: 27
+
+my_list = [10, 1, 8, 3, 5]
+
+my_list[0], my_list[4] = my_list[4], my_list[0]
+my_list[1], my_list[3] = my_list[3], my_list[1]
+
+print(my_list)  # output: [5, 3, 8, 1, 10]
+
+
+length = [3, 5, 6,8,9]
+for i in range(length // 2):
+    my_list[i], my_list[length - i - 1] = my_list[length - i - 1], my_list[i]
+
+print(my_list)
+
+# step 1: create an empty list named beatles;
+# step 2: use the append() method to add the following members of the band to the list: John Lennon, Paul McCartney, and George Harrison;
+# step 3: use the for loop and the append() method to prompt the user to add the following members of the band to the list: Stu Sutcliffe, and Pete Best;
+# step 4: use the del instruction to remove Stu Sutcliffe and Pete Best from the list;
+# step 5: use the insert() method to add Ringo Starr to the beginning of the list.
+
+# step 1
+beatles = []
+print("Step 1:", beatles)
+
+# step 2
+beatles.append("John Lennon")
+beatles.append("Paul McCartney")
+beatles.append("George Harrison")
+print("Step 2:", beatles)
+
+# step 3
+user1 = input("enter another name: ")
+user2 = input("enter another name: ")
+users = []
+users.append(user1)
+users.append(user2)
+for name in users:
+    beatles.append(name)
+print("Step 3:", beatles)
+
+
+# step 4
+del beatles[4]
+del beatles[3]
+print("Step 4:", beatles)
+
+# step 5
+beatles.insert(3, "Ringo Starr")
+print("Step 5:", beatles)
+
+# testing list legth
+print("The Fab", len(beatles))
+
+my_list = [1, None, True, 'I am a string', 256, 0]
+print(my_list[3])  # outputs: I am a string
+print(my_list[-1])  # outputs: 0
+
+my_list[1] = '?'
+print(my_list)  # outputs: [1, '?', True, 'I am a string', 256, 0]
+
+my_list.insert(0, "first")
+my_list.append("last")
+print(my_list)  # outputs: ['first', 1, '?', True, 'I am a string', 256, 0, 'last']
+
+my_list = [1, 2, 3, 4]
+del my_list[2]
+print(my_list)  # outputs: [1, 2, 4]
+
+del my_list  # deletes the whole list
+
+# List elements and lists can be deleted, e.g.:
+my_list = [1, 2, 3, 4]
+del my_list[2]
+print(my_list)  # outputs: [1, 2, 4]
+
+del my_list  # deletes the whole list
+
+lst = [1, 2, 3, 4, 5]
+lst_2 = []
+add = 0
+
+for number in lst:
+    add += number
+    lst_2.append(add)
+
+print(lst_2)
+
+# sorting
+my_list = [8, 10, 6, 2, 4]  # list to sort
+
+for i in range(len(my_list) - 1):  # we need (5 - 1) comparisons
+    if my_list[i] > my_list[i + 1]:  # compare adjacent elements
+        my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]  # If we end up here, we have to swap the elements.
+        print(my_list)
+print(my_list)
+
+my_list = [8, 10, 6, 2, 4]  # list to sort
+swapped = True  # It's a little fake, we need it to enter the while loop.
+
+while swapped:
+    swapped = False  # no swaps so far
+    for i in range(len(my_list) - 1):
+        if my_list[i] > my_list[i + 1]:
+            swapped = True  # a swap occurred!
+            my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+            print(my_list)  # here is the steps of the sorting items
+
+print(my_list)
+
+my_list = []
+swapped = True
+num = int(input("How many elements do you want to sort: "))
+
+for i in range(num):
+    val = float(input("Enter a list element: "))
+    my_list.append(val)
+
+while swapped:
+    swapped = False
+    for i in range(len(my_list) - 1):
+        if my_list[i] > my_list[i + 1]:
+            swapped = True
+            my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+
+print("\nSorted:")
+print(my_list)
+
+# built in sort
+my_list = [8, 10, 6, 2, 4]
+my_list.sort()
+print(my_list)  # [2, 4, 6, 8, 10]
+
+
+lst = [5, 3, 1, 2, 4]
+print(lst)
+
+lst.sort()
+print(lst)  # outputs: [1, 2, 3, 4, 5]
+
+lst = [5, 3, 1, 2, 4]
+print(lst)
+
+lst.reverse()
+print(lst)  # outputs: [4, 2, 1, 3, 5]
+
+a = 3
+b = 1
+c = 2
+
+lst = [a, c, b]
+lst.sort()
+
+print(lst)  # 1 2 3
+
+
+a = 3
+b = 1
+c = 2
+
+lst = [a, c, b]
+lst.sort()
+
+print(lst)  # [' ', 'C', 'B', 'A']
+
+
+# the inner life of a list: equivalence action of python list
+list_1 = [1]
+list_2 = list_1
+list_1[0] = 2
+print(list_2) # 2
+
+
+list_1 = [1]
+list_2 = list_1[:]
+list_1[0] = 2
+print(list_2)   # 1 : the slice[:] makes list_2 to copy only the content not list_1 as in memory location
+
+# Copying the entire list.
+list_1 = [1]
+list_2 = list_1[:]
+list_1[0] = 2
+print(list_2)  # 1
+
+# Copying some part of the list.
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[1:3]
+print(new_list)  # 8, 6
+
+# my_list[start:end]
+
+# start is the index of the first element included in the slice;
+# end is the index of the first element not included in the slice.
+# This is how negative indices work with the slice:
+
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[1:-1]
+print(new_list) # 8, 6, 4
+
+
+
+
+
+
