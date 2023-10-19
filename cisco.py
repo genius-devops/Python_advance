@@ -1,4 +1,5 @@
 import math
+# from icecream import icecream as ic # Debugging tool | ic function can serv as print function
 print("Programming","Essentials","in", sep="***", end="...")
 print("Python")
 
@@ -1091,8 +1092,321 @@ my_list = [10, 8, 6, 4, 2]
 new_list = my_list[1:-1]
 print(new_list) # 8, 6, 4
 
+# finding the largest number
+
+my_list = [17, 3, 11, 5, 1, 9, 7, 15, 13]
+largest = my_list[0]
+
+for i in range(1, len(my_list)):
+    if my_list[i] > largest:
+        largest = my_list[i]
+
+print(largest) # 17 | instead of using max() function to check for the largest numbber
+
+# alternatively
+my_list = [17, 3, 11, 5, 1, 9, 7, 15, 13]
+largest = my_list[0]
+
+for i in my_list:
+    if i > largest:
+        largest = i
+
+print(largest)
+
+my_list = [17, 3, 11, 5, 1, 9, 7, 15, 13]
+largest = my_list[0]
+
+for i in my_list[1:]:
+    if i > largest:
+        largest = i
+
+print(largest)
+
+# Now let's find the location of a given element inside a list:
+# to check for which index an element belong to in a list
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+to_find = 5
+found = False
+
+for i in range(len(my_list)):
+    found = my_list[i] == to_find
+    if found:
+        break
+
+if found:
+    print("Element found at index", i) # Element found at index 4
+else:
+    print("absent")
 
 
+# to check for largest number
+my_list = [17, 3, 11, 5, 1, 9, 60, 7, 15, 13]
+largest = my_list[0]
+
+for i in my_list[1:]:
+    if i > largest:
+        largest = i
+
+print("the largest number is ", largest)  # largest number is 60
+
+print("""object and value| two object referencing single value""")
+vehicles_one = ['car', 'bicycle', 'motor']
+print(vehicles_one) # outputs: ['car', 'bicycle', 'motor']
+
+vehicles_two = vehicles_one
+del vehicles_one[0] # deletes 'car'
+print(vehicles_two) # outputs: ['bicycle', 'motor']
+
+# 2. If you want to copy a list or part of the list, you can do it by performing slicing:
+colors = ['red', 'green', 'orange']
+
+copy_whole_colors = colors[:]  # copy the entire list
+copy_part_colors = colors[0:2]  # copy part of the list
+
+# 3. You can use negative indices to perform slices, too. For example:
+sample_list = ["A", "B", "C", "D", "E"]
+new_list = sample_list[2:-1]
+print(new_list)  # outputs: ['C', 'D']
+
+# 4. The start and end parameters are optional when performing a slice: list[start:end], e.g.:
+my_list = [1, 2, 3, 4, 5]
+slice_one = my_list[2: ]
+slice_two = my_list[ :2]
+slice_three = my_list[-2: ]
+
+print(slice_one)  # outputs: [3, 4, 5]
+print(slice_two)  # outputs: [1, 2]
+print(slice_three)  # outputs: [4, 5]
+
+# You can delete slices using the del instruction:
+my_list = [1, 2, 3, 4, 5]
+del my_list[0:2]
+print(my_list)  # outputs: [3, 4, 5]
+
+del my_list[:]
+print(my_list)  # deletes the list content, outputs: []
+
+# 6. You can test if some items exist in a list or not using the keywords in and not in, e.g.:
+my_list = ["A", "B", 1, 2]
+
+print("A" in my_list)  # outputs: True
+print("C" not in my_list)  # outputs: True
+print(2 not in my_list)  # outputs: False
+
+# what is the output of this code
+list_1 = ["A", "B", "C"]
+list_2 = list_1
+list_3 = list_2
+
+del list_1[0]
+del list_2[0]
+
+print(list_3)  # output| C
+
+# what is the  output of the ff snippet
+list_1 = ["A", "B", "C"]
+list_2 = list_1
+list_3 = list_2
+
+del list_1[0]
+del list_2
+
+print(list_3)  # output | ["B", "C"]
+
+# what is the  output of the ff snippet
+list_1 = ["A", "B", "C"]
+list_2 = list_1
+list_3 = list_2
+
+del list_1[0]
+del list_2[:]
+
+print(list_3) # output  | []
+
+# Question 4: What is the output of the following snippet?
+list_1 = ["A", "B", "C"]
+list_2 = list_1[:]
+list_3 = list_2[:]
+
+del list_1[0]
+del list_2[0]
+
+print(list_3) # output | ["A", "B", "C"]
+
+# Question 5: Insert in or not in instead of ??? so that the code outputs the expected result.
+my_list = [1, 2, "in", True, "ABC"]
+
+print(1 in my_list)  # outputs True
+print("A" not in my_list)  # outputs True
+print(3 not in my_list)  # outputs True
+print(False in my_list)  # outputs False
+# my_list = [1, 2, "in", True, "ABC"] print(1 in my_list) # outputs True print("A" not in my_list) # outputs True print(3 not in my_list) # outputs True print(False in my_list) # outputs False
 
 
+# start is the index of the first element included in the slice;
+# end is the index of the first element not included in the slice.
+
+my_list = [10, 8, 6, 4, 2]
+new_list = my_list[1:-1]
+print(new_list)  # output | [8, 6, 4]  | index 1 "START" is included which is 8 | index -1 "END" is not included which is 2 the index stops at 2
+
+# list comprehension
+squares = [x ** 2 for x in range(10)]
+twos = [2 ** i for i in range(8)]
+odds = [x for x in range(20) if x % 2 != 0 ]
+
+# if we want to create a list of lists representing the whole chessboard, it may be done in the following way:
+board = []
+
+for i in range(8):
+    row = [8 * 8 for i in range(8)]
+    board.append(row)
+
+# alternatively
+board = [[8 * 8 for i in range(8)] for j in range(8)]
+board[0][0] = ROOK
+board[0][7] = ROOK
+board[7][0] = ROOK
+board[7][7] = ROOK
+print(ROOK)
+
+board[4][2] = KNIGHT
+print(KNIGHT)
+
+board[3][4] = PAWN
+print(PAWN)
+
+
+print("""
+Imagine that you're developing a piece of software for an automatic weather station. The device records the air temperature on an hourly basis and does it throughout the month. This gives you a total of 24 × 31 = 744 values. Let's try to design a list capable of storing all these results.
+
+First, you have to decide which data type would be adequate for this application. In this case, a float would be best, since this thermometer is able to measure the temperature with an accuracy of 0.1 ℃.
+
+Then you take an arbitrary decision that the rows will record the readings every hour on the hour (so the row will have 24 elements) and each of the rows will be assigned to one day of the month (let's assume that each month has 31 days, so you need 31 rows). Here's the appropriate pair of comprehensions (h is for hour, d for day):
+""")
+
+temps = [[0.0 for h in range(24)] for d in range(31)]
+
+"""
+The whole matrix is filled with zeros now. You can assume that it's updated automatically using special hardware agents. The thing you have to do is to wait for the matrix to be filled with measurements.
+Now it's time to determine the monthly average noon temperature. Add up all 31 readings recorded at noon and divide the sum by 31. You can assume that the midnight temperature is stored first. Here's the relevant code:
+"""
+temps = [[0.0 for h in range(24)] for d in range(31)]
+#
+# The matrix is magically updated here.
+#
+
+total = 0.0
+
+for day in temps:
+    total += day[11]
+
+average = total / 31
+
+print("Average temperature at noon:", average)
+
+print("""
+Note: the day variable used by the for loop is not a scalar ‒ each pass through the temps matrix assigns it with the subsequent rows of the matrix; hence, it's a list. It has to be indexed with 11 to access the temperature value measured at noon.
+""")
+
+# Now find the highest temperature during the whole month
+temps = [[0.0 for h in range(24)] for d in range(31)]
+#
+# The matrix is magically updated here.
+#
+
+highest = -100.0
+
+for day in temps:
+    for temp in day:
+        if temp > highest:
+            highest = temp
+
+print("The highest temperature was:", highest)
+
+"""the day variable iterates through all the rows in the temps matrix;
+the temp variable iterates through all the measurements taken in one day."""
+
+# Now count the days when the temperature at noon was at least 20 ℃:
+temps = [[0.0 for h in range(24)] for d in range(31)]
+#
+# The matrix is magically updated here.
+#
+
+hot_days = 0
+
+for day in temps:
+    if day[11] > 20.0:
+        hot_days += 1
+
+print(hot_days, "days were hot.")
+
+print("""
+Imagine a hotel. It's a huge hotel consisting of three buildings, 15 floors each. There are 20 rooms on each floor. For this, you need an array which can collect and process information on the occupied/free rooms.
+
+First step ‒ the type of the array's elements. In this case, a Boolean value (True/False) would fit.
+
+Step two ‒ calm analysis of the situation. Summarize the available information: three buildings, 15 floors, 20 rooms.
+
+Now you can create the array:
+""")
+
+
+rooms = [[[False for r in range(20)] for f in range(15)] for t in range(3)]
+
+print("""
+The first index (0 through 2) selects one of the buildings; the second (0 through 14) selects the floor, the third (0 through 19) selects the room number. All rooms are initially free.
+
+Now you can book a room for two newlyweds: in the second building, on the tenth floor, room 14:
+""")
+rooms[1][9][13] = True
+
+# and release the second room on the fifth floor located in the first building:
+rooms[0][4][1] = False
+
+# Check if there are any vacancies on the 15th floor of the third building:
+vacancy = 0
+
+for room_number in range(20):
+    if not rooms[2][14][room_number]:
+        vacancy += 1
+
+
+print("""
+The vacancy variable contains 0 if all the rooms are occupied, or the number of available rooms otherwise.
+
+Congratulations! You've made it to the end of the module. Keep up the good work!
+""")
+
+cubed = [num ** 3 for num in range(5)]
+print(cubed)  # outputs: [0, 1, 8, 27, 64]
+
+# A four-column/four-row table ‒ a two dimensional array (4x4)
+
+table = [[":(", ":)", ":(", ":)"],
+         [":)", ":(", ":)", ":)"],
+         [":(", ":)", ":)", ":("],
+         [":)", ":)", ":)", ":("]]
+
+print(table)
+print(table[0][0])  # outputs: ':('
+print(table[0][3])  # outputs: ':)'
+
+# Cube - a three-dimensional array (3x3x3)
+
+cube = [[[':(', 'x', 'x'],
+         [':)', 'x', 'x'],
+         [':(', 'x', 'x']],
+
+        [[':)', 'x', 'x'],
+         [':(', 'x', 'x'],
+         [':)', 'x', 'x']],
+
+        [[':(', 'x', 'x'],
+         [':)', 'x', 'x'],
+         [':)', 'x', 'x']]]
+
+print(cube)
+print(cube[0][0][0])  # outputs: ':('
+print(cube[2][2][0])  # outputs: ':)'
 
