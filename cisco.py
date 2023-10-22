@@ -1592,6 +1592,256 @@ def strange_list_fun(n):
 
 print(strange_list_fun(5))
 
+print("""Your task is to write and test a function which takes one argument (a year) and returns True if the year is a leap year, or False otherwise.
+
+The seed of the function is already sown in the skeleton code in the editor.
+""")
+
+
+# solution
+def is_year_leap(year):
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 400 != 0:
+        return False
+    else:
+        return True
+
+
+test_data = [1900, 2000, 2016, 1987]
+test_results = [False, True, True, False]
+for i in range(len(test_data)):
+    yr = test_data[i]
+    print(yr, "-> ", end="")
+    result = is_year_leap(yr)
+    if result == test_results[i]:
+        print("OK")
+    else:
+        print("Failed")
+
+print(
+    """Your task is to write and test a function which takes two arguments (a year and a month) and returns the number of days for the given year-month pair (while only February is sensitive to the year value, your function should be universal).""")
+
+
+# solution
+def is_year_leap(year):
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 400 != 0:
+        return False
+    else:
+        return True
+
+
+def days_in_month(year, month):
+    if year < 1582 or month < 1 or month > 12:
+        return None
+    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    res = days[month - 1]
+    if month == 2 and is_year_leap(year):
+        res = 29
+    return res
+
+
+test_years = [1900, 2000, 2016, 1987]
+test_months = [2, 2, 1, 11]
+test_results = [28, 29, 31, 30]
+for i in range(len(test_years)):
+    yr = test_years[i]
+    mo = test_months[i]
+    print(yr, mo, "-> ", end="")
+    result = days_in_month(yr, mo)
+    if result == test_results[i]:
+        print("OK")
+    else:
+        print("Failed")
+
+print("""write a function checking whether a number is prime or not. 
+The function:
+
+is called is_prime;
+takes one argument (the value to check)
+returns True if the argument is a prime number, and False otherwise.""")
+
+
+# solution
+def is_prime(num):
+    for i in range(2, int(1 + num ** 0.5)):
+        if num % i == 0:
+            return False
+    return True
+
+
+for i in range(1, 20):
+    if is_prime(i + 1):
+        print(i + 1, end=" ")
+print()
+
+print("""write a pair of functions converting l/100km into mpg, and vice versa.
+
+The functions:
+
+are named liters_100km_to_miles_gallon and miles_gallon_to_liters_100km respectively;
+take one argument (the value corresponding to their names)
+Complete the code in the editor and run it to check whether your output is the same as ours.
+
+Here is some information to help you:
+
+1 American mile = 1609.344 metres;
+1 American gallon = 3.785411784 litres.
+expected output:
+60.31143162393162
+31.36194444444444
+23.52145833333333
+3.9007393587617467
+7.490910297239916
+10.009131205673757""")
+
+
+# solution
+
+# 1 American mile = 1609.344 metres
+# 1 American gallon = 3.785411784 litres
+
+def liters_100km_to_miles_gallon(litres):
+    gallons = litres / 3.785411784
+    miles = 100 * 1000 / 1609.344
+    return miles / gallons
+
+
+def miles_gallon_to_liters_100km(miles):
+    km100 = miles * 1609.344 / 1000 / 100
+    litres = 3.785411784
+    return litres / km100
+
+
+print(liters_100km_to_miles_gallon(3.9))
+print(liters_100km_to_miles_gallon(7.5))
+print(liters_100km_to_miles_gallon(10.))
+print(miles_gallon_to_liters_100km(60.3))
+print(miles_gallon_to_liters_100km(31.4))
+print(miles_gallon_to_liters_100km(23.5))
+
+print(
+    """1. You can use the return keyword to tell a function to return some value. The return statement exits the function, e.g.:""")
+
+
+def multiply(a, b):
+    return a * b
+
+
+print(multiply(3, 4))  # outputs: 12
+
+
+def multiply(a, b):
+    return
+
+
+print(multiply(3, 4))  # outputs: None
+
+print("""2. The result of a function can be easily assigned to a variable, e.g.:""")
+
+
+def wishes():
+    return "Happy Birthday!"
+
+
+w = wishes()
+
+print(w)  # outputs: Happy Birthday!
+
+print("""Look at the difference in output in the following two examples:""")
+
+
+# Example 1
+def wishes():
+    print("My Wishes")
+    return "Happy Birthday"
+
+
+wishes()  # outputs: My Wishes
+
+
+# Example 2
+def wishes():
+    print("My Wishes")
+    return "Happy Birthday"
+
+
+print(wishes())
+
+# outputs: My Wishes
+#          Happy Birthday
+
+print("""3. You can use a list as a function's argument, e.g.:""")
+
+
+def hi_everybody(my_list):
+    for name in my_list:
+        print("Hi,", name)
+
+
+hi_everybody(["Adam", "John", "Lucy"])
+
+print("""A list can be function too""")
+
+
+def create_list(n):
+    my_list = []
+    for i in range(n):
+        my_list.append(i)
+    return my_list
+
+
+print(create_list(5))
+
+
+def hi():
+    return
+    print("Hi!")
+
+
+hi()  # The function will return an implicit None value.
+
+
+def is_int(data):
+    if type(data) == int:
+        return True
+    elif type(data) == float:
+        return False
+
+
+print(is_int(5))  # True
+print(is_int(5.0))  # False
+print(is_int("5"))  # None
+
+
+def even_num_lst(ran):
+    lst = []
+    for num in range(ran):
+        if num % 2 == 0:
+            lst.append(num)
+    return lst
+
+
+print(even_num_lst(11))  # [0, 2, 4, 6, 8, 10]
+
+
+def list_updater(lst):
+    upd_list = []
+    for elem in lst:
+        elem **= 2
+        upd_list.append(elem)
+    return upd_list
+
+
+foo = [1, 2, 3, 4, 5]
+print(list_updater(foo))  # [1, 4, 9, 16, 25]
+
 
 
 
