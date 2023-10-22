@@ -1410,3 +1410,188 @@ print(cube)
 print(cube[0][0][0])  # outputs: ':('
 print(cube[2][2][0])  # outputs: ':)'
 
+# functions
+def adding(a, b, c):
+    print(a, "+", b, "+", c, "=", a + b + c)
+
+adding(1, 2, 3)
+
+def introduction(first_name, last_name="Smith"):
+     print("Hello, my name is", first_name, last_name)
+
+introduction("James", "Doe")
+
+introduction("Henry")
+
+introduction(first_name="William")
+
+# This makes the following invocation absolutely valid:
+def introduction(first_name="John", last_name="Smith"):
+    print("Hello, my name is", first_name, last_name)
+
+introduction()
+introduction(last_name="Hopkins")
+
+def hi(name):
+    print("Hi,", name)
+
+hi("Greg")
+
+# alternatively
+def hi_all(name_1, name_2):
+    print("Hi,", name_2)
+    print("Hi,", name_1)
+
+hi_all("Sebastian", "Konrad")
+
+def address(street, city, postal_code):
+    print("Your address is:", street, "St.,", city, postal_code)
+
+s = input("Street: ")
+p_c = input("Postal Code: ")
+c = input("City: ")
+address(s, c, p_c)
+
+# Ex. 1
+def subtra(a, b):
+    print(a - b)
+
+subtra(5, 2)    # outputs: 3
+subtra(2, 5)    # outputs: -3
+
+
+# Ex. 2
+def subtra(a, b):
+    print(a - b)
+
+subtra(a=5, b=2)    # outputs: 3
+subtra(b=2, a=5)    # outputs: 3
+
+# Ex. 3
+def subtra(a, b):
+    print(a - b)
+
+subtra(5, b=2)    # outputs: 3
+subtra(5, 2)    # outputs: 3
+
+def subtra(a, b):
+    print(a - b)
+
+subtra(5, b=2)    # outputs: 3
+subtra(a=5, 2)    # Syntax Error
+
+def name(first_name, last_name="Smith"):
+    print(first_name, last_name)
+
+name("Andy")    # outputs: Andy Smith
+name("Betty", "Johnson")    # outputs: Betty Johnson (the keyword argument replaced by "Johnson")
+
+def intro(a="James Bond", b="Bond"):
+    print("My name is", b + ".", a + ".")
+
+intro(b="Sean Connery") # output:  My name is Sean Connery. James Bond.
+
+def intro(a, b="Bond"):
+    print("My name is", b + ".", a + ".")
+
+intro("Susan") # Bond. Susan.
+
+def add_numbers(a, b=2, c):
+    print(a + b + c)
+
+add_numbers(a=1, c=3)  # SyntaxError: non-default argument follows default argument
+
+
+print("""function with return value""")
+def happy_new_year(wishes = True):
+    print("Three...")
+    print("Two...")
+    print("One...")
+    if not wishes:
+        return  # return without an expression
+
+    print("Happy New Year!")
+happy_new_year()
+print("""output:
+Three...
+Two...
+One...
+Happy New Year!""")
+
+happy_new_year(False)
+print("""output:
+Three...
+Two...
+One...""")
+
+
+def boring_function():
+    return 123
+
+
+x = boring_function()
+
+print("The boring_function has returned its result. It's:", x)
+
+
+def boring_function():
+    print("'Boredom Mode' ON.")
+    return 123
+
+
+print("This lesson is interesting!")
+boring_function()
+print("This lesson is boring...")
+
+
+# None type
+def strange_function(n):
+    if (n % 2 == 0):
+        return "True"
+
+
+x = strange_function(8)
+print(x)  # True
+x = strange_function(8)
+print(x)  # None
+
+
+def strange_function(n):
+    if (n % 2 == 0):
+        return True
+
+
+print(strange_function(2))  # True
+print(strange_function(1))  # None
+
+
+# may a list be sent to a function as an argument?
+# So, if you pass a list to a function, the function has to handle it like a list.
+def list_sum(lst):
+    s = 0
+
+    for elem in lst:
+        s += elem
+
+    return s
+
+
+print(list_sum([5, 4, 3]))  # 12
+print(list_sum(range(5)))  # 10
+
+
+# may a list be a function result?
+def strange_list_fun(n):
+    strange_list = []
+
+    for i in range(0, n):
+        strange_list.insert(0, i)
+
+    return strange_list
+
+
+print(strange_list_fun(5))
+
+
+
+
