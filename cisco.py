@@ -1842,6 +1842,179 @@ def list_updater(lst):
 foo = [1, 2, 3, 4, 5]
 print(list_updater(foo))  # [1, 4, 9, 16, 25]
 
+# python scope
+print(" does a variable's name propagate into a function's body?\nYes | a variable existing outside a function has scope inside the function's body.\nConsider the following code bellow")
+# scope in action:
+def my_function():
+    print("Do I know that variable?", var)
+
+
+var = 1
+my_function()
+print(var)
+
+
+# local vs global varisble
+def my_function():
+    var = 2  # local variable | higher priority and more vissible within the function than global variable
+    print("Do I know that variable?", var)  # Do I know that variable? 2
+
+
+var = 1   # global variable | lower priority and less vissible within in the function esp.when identical variable appear within the local scope
+my_function()
+print(var)  #  1
+print("A variable existing outside a function has scope inside the function's body, excluding those which define a variable of the same name.\nIt also means that the scope of a variable existing outside a function is supported only when getting its value (reading). Assigning a value forces the creation of the function's own variable.")
+
+# using global keyword from inside of a function
+def my_function():
+    global var
+    var = 2
+    print("Do I know that variable?", var) # output" Do I know that variable? 2
+
+
+var = 1
+my_function() # output: 1
+print(var)
+
+print("How the function interacts with its arguments")
+def my_function(n):
+    print("I got", n)
+    n += 1
+    print("I have", n)
+
+
+var = 1
+my_function(var)
+print(var)
+print("""I got 1
+I have 2
+1""")
+
+def my_function(my_list_1):
+    print("Print #1:", my_list_1)
+    printprint("Print #2:", my_list_2)
+    my_list_1 = [0, 1]
+    print("Print #3:", my_list_1)
+    print("Print #4:", my_list_2)
+
+
+my_list_2 = [2, 3]
+my_function(my_list_2)
+print("Print #5:", my_list_2)
+
+print("""output:
+Print #1: [2, 3]
+Print #2: [2, 3]
+Print #3: [0, 1]
+Print #4: [2, 3]
+Print #5: [2, 3]
+
+We don't change the value of the parameter my_list_1 (we already know it will not affect the argument), but instead modify the list identified by it.
+if the argument is a list, then changing the value of the corresponding parameter doesn't affect the list (remember: variables containing lists are stored in a different way than scalars)
+but if you change a list identified by the parameter (note: the list, not the parameter!), the list will reflect the change.
+""")
+
+print("""1. A variable that exists outside a function has scope inside the function body (Example 1) unless the function defines a variable of the same name (Example 2, and Example 3), e.g.:""")
+var = 2
+
+
+def mult_by_var(x):
+    return x * var
+
+
+print(mult_by_var(7))    # outputs: 14
+
+def mult(x):
+    var = 5
+    return x * var
+
+
+print(mult(7))    # outputs: 35
+
+def mult(x):
+    var = 7
+    return x * var
+
+
+var = 3
+print(mult(7))    # outputs: 49
+
+print("""2. A variable that exists inside a function has scope inside the function body (Example 4), e.g.:""")
+def adding(x):
+    var = 7
+    return x + var
+
+
+print(adding(4))    # outputs: 11
+#print(var)    # NameError
+
+print("""3. You can use the global keyword followed by a variable name to make the variable's scope global, e.g.:""")
+var = 2
+print(var)    # outputs: 2
+
+
+def return_var():
+    global var
+    var = 5
+    return var
+
+
+print(return_var())    # outputs: 5
+print(var)    # outputs: 5
+
+def message():
+    alt = 1
+    print("Hello, World!")
+message()
+# print(alt) # NameError: name 'alt' is not defined
+
+a = 1
+
+
+def fun():
+    a = 2
+    print(a)
+
+
+fun()
+print(a)
+
+a = 1
+
+
+def fun():
+    global a
+    a = 2
+    print(a)
+
+
+fun()
+a = 3
+print(a)
+print("""output:
+2
+3
+""")
+
+a = 1
+
+
+def fun():
+    global a
+    a = 2
+    print(a)
+
+
+a = 3
+fun()
+print(a)
+
+print("""output:
+2
+2
+""")
+
+
 
 
 
