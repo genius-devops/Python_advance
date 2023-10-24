@@ -2014,6 +2014,472 @@ print("""output:
 2
 """)
 
+print("""Evaluating the BMI
+Let's get started on a function to evaluate the Body Mass Index (BMI).
+
+As you can see, the formula gets two values:
+
+weight (originally in kilograms)
+height (originally in meters)
+It seems that this new function will have two parameters. Its name will be bmi, but if you prefer any other name, use it instead.
+BMI = WEIHGT IN KG / HEIGHT IN MEETER ** 2""")
+
+def bmi(weight, height):
+    return weight / height ** 2
+
+
+print(bmi(52.5, 1.65)) # 19.283746556473833
+
+# Evaluating BMI and converting imperial units to metric units
+def bmi(weight, height):
+    if height < 1.0 or height > 2.5 or \
+    weight < 20 or weight > 200:
+        return None
+
+    return weight / height ** 2
+
+
+print(bmi(352.5, 1.65))# output: None
+print("""Okay, but there's something we omitted too easily ‒ the imperial measurements. This function is not too useful for people accustomed to pounds, feet, and inches.
+
+What can be done for them?""")
+
+def lb_to_kg(lb):
+    return lb * 0.45359237  # 1 lb = 0.45359237 kg
+
+
+print(lb_to_kg(1)) # 0.45359237
+
+# And now it's time for feet and inches: 1 ft = 0.3048 m, and 1 in = 2.54 cm = 0.0254 m.
+
+def ft_and_inch_to_m(ft, inch):
+    return ft * 0.3048 + inch * 0.0254
+
+
+print(ft_and_inch_to_m(1, 1))  # 0.3302
+print("Let's convert six feet into meters:")
+print(ft_and_inch_to_m(6, 0))  # 1.8288000000000002
+print("It's quite possible that sometimes you may want to use just feet without inches. Will Python help you? Of course it will.")
+print("""Finally, the code is able to answer the question: what is the BMI of a person 5'7" tall and weighing 176 lbs?""")
+def ft_and_inch_to_m(ft, inch = 0.0):
+    return ft * 0.3048 + inch * 0.0254
+
+
+print(ft_and_inch_to_m(6))  # 1.8288000000000002
+
+def ft_and_inch_to_m(ft, inch = 0.0):
+    return ft * 0.3048 + inch * 0.0254
+
+
+def lb_to_kg(lb):
+    return lb * 0.4535923
+
+
+def bmi(weight, height):
+    if height < 1.0 or height > 2.5 or weight < 20 or weight > 200:
+        return None
+
+    return weight / height ** 2
+
+
+print(bmi(weight = lb_to_kg(176), height = ft_and_inch_to_m(5, 7)))  # 27.565214082533313
+
+print("""Let's play with triangles now. We'll start with a function to check whether three sides of given lengths can build a triangle.
+
+We know from school that the sum of two arbitrary sides has to be longer than the third side.
+
+It won't be a hard challenge. The function will have three parameters ‒ one for each side.
+
+It will return True if the sides can build a triangle, and False otherwise. In this case, is_a_triangle is a good name for such a function.
+
+Look at the code in the editor. You can find our function there. Run the program.""")
+def is_a_triangle(a, b, c):
+    if a + b <= c:
+        return False
+    if b + c <= a:
+        return False
+    if c + a <= b:
+        return False
+    return True
+
+
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+def is_a_triangle(a, b, c):
+    if a + b <= c or b + c <= a or c + a <= b:
+        return False
+    return True
+
+
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+
+
+def is_a_triangle(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+
+def is_a_triangle(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+
+a = float(input('Enter the first side\'s length: '))
+b = float(input('Enter the second side\'s length: '))
+c = float(input('Enter the third side\'s length: '))
+
+if is_a_triangle(a, b, c):
+    print('Yes, it can be a triangle.')
+else:
+    print('No, it can\'t be a triangle.')
+
+
+
+print("""In the second step, we'll try to ensure that a certain triangle is a right-angle triangle.
+
+We will need to make use of the Pythagorean theorem:
+
+c2 = a2 + b2
+Look at how we test the relationship between the hypotenuse and the remaining sides ‒ we choose the longest side, and apply the Pythagorean theorem to check if everything is right. This requires three checks in total.
+""")
+
+def is_a_triangle(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+
+def is_a_right_triangle(a, b, c):
+    if not is_a_triangle(a, b, c):
+        return False
+    if c > a and c > b:
+        return c ** 2 == a ** 2 + b ** 2
+    if a > b and a > c:
+    if a > b and a > c:
+        return a ** 2 == b ** 2 + c ** 2
+print(is_a_right_triangle(5, 3, 4))
+print(is_a_right_triangle(1, 3, 4))
+
+print("""Evaluating a triangle's area
+We can also evaluate a triangle's area. Heron's formula will be handy here:
+
+S = a + b + c / 2,
+A = sqrt(s(s - a)(s - b)(s - c)))
+    """)
+# This is the resulting code:
+def is_a_triangle(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+
+def heron(a, b, c):
+    p = (a + b + c) / 2
+    return (p * (p - a) * (p - b) * (p - c)) ** 0.5
+
+
+def area_of_triangle(a, b, c):
+    if not is_a_triangle(a, b, c):
+        return None
+    return heron(a, b, c)
+
+
+print(area_of_triangle(1., 1., 2. ** .5))
+
+print("""We try it with a right-angle triangle as a half of a square with one side equal to 1. This means that its area should be equal to 0.5.
+
+It's odd ‒ the code produces the following output: 0.49999999999999983
+
+It's very close to 0.5, but it isn't exactly 0.5. What does it mean? Is it an error?
+
+No, it isn't. This is the specifics of floating-point calculations. We'll tell you more about it soon.""")
+
+print("""4.5.3 Sample functions: Factorials
+Another function we're about to write is factorials. Do you remember how a factorial is defined?
+
+0! = 1 (yes! it's true) 1! = 1 2! = 1 * 2 3! = 1 * 2 * 3 4! = 1 * 2 * 3 * 4 : : n! = 1 * 2 ** 3 * 4 * ... * n-1 * n
+
+It's marked with an exclamation mark, and is equal to the product of all natural numbers from one up to its argument.
+
+Let's write our code. We'll create a function and call it factorial_function. Here is the code:""")
+
+def factorial_function(n):
+    if n < 0:
+        return None
+    if n < 2:
+        return 1
+
+    product = 1
+    for i in range(2, n + 1):
+        product *= i
+    return product
+
+
+for n in range(1, 6):  # testing
+    print(n, factorial_function(n))
+
+print("""Notice how we mirror step-by-step the mathematical definition, and how we use the for loop to find the product.
+
+We add a simple testing code, and these are the results we get:
+
+1 1
+2 2
+3 6
+4 24
+5 120""")
+
+print("""4.5.4 Fibonacci numbers
+Are you familiar with Fibonacci numbers?
+
+They are a sequence of integer numbers built using a very simple rule:
+
+the first element of the sequence is equal to one (Fib1 = 1)
+the second is also equal to one (Fib2 = 1)
+every subsequent number is the the_sum of the two preceding numbers:(Fibi = Fibi-1 + Fibi-2)
+Here are some of the first Fibonacci numbers:
+
+fib_1 = 1 fib_2 = 1 fib_3 = 1 + 1 = 2 fib_4 = 1 + 2 = 3 fib_5 = 2 + 3 = 5 fib_6 = 3 + 5 = 8 fib_7 = 5 + 8 = 13
+
+What do you think about implementing this as a function?
+
+Let's create our fib function and test it. Here it is""")
+def fib(n):
+    if n < 1:
+        return None
+    if n < 3:
+        return 1
+
+    elem_1 = elem_2 = 1
+    the_sum = 0
+    for i in range(3, n + 1):
+        the_sum = elem_1 + elem_2
+        elem_1, elem_2 = elem_2, the_sum
+    return the_sum
+
+
+for n in range(1, 10):  # testing
+    print(n, "->", fib(n))
+
+print("""
+1 -> 1
+2 -> 1
+3 -> 2
+4 -> 3
+5 -> 5
+6 -> 8
+7 -> 13
+8 -> 21
+9 -> 34
+""")
+print("""4.5.5 Recursion
+There's one more thing we want to show you to make everything complete − it's recursion.
+
+This term may describe many different concepts, but one of them is especially interesting − the one referring to computer programming.
+
+In this field, recursion is a technique where a function invokes itself.
+
+These two cases seem to be the best to illustrate the phenomenon − factorials and Fibonacci numbers. Especially the latter.
+
+The Fibonacci numbers definition is a clear example of recursion. We already told you that:
+
+Fibi = Fibi-1 + Fibi-2
+
+The definition of the ith number refers to the i-1 number, and so on, till you reach the first two.
+
+Can it be used in the code? Yes, it can. It can also make the code shorter and clearer.
+
+The second version of our fib() function makes direct use of this definition:""")
+
+
+def fib(n):
+    if n < 1:
+        return None
+    if n < 3:
+        return 1
+    return fib(n - 1) + fib(n - 2)
+
+print("""The code is much clearer now.
+
+But is it really safe? Does it entail any risk?
+
+Yes, there is a little risk indeed. If you forget to consider the conditions which can stop the chain of recursive invocations, the program may enter an infinite loop. You have to be careful.
+
+The factorial has a second, recursive side too. Look:
+
+n! = 1 × 2 × 3 × ... × n-1 × n
+
+It's obvious that:
+
+1 × 2 × 3 × ... × n-1 = (n-1)!
+
+So, finally, the result is:
+
+n! = (n-1)! × n
+
+This is in fact a ready recipe for our new solution.""")
+def factorial_function(n):
+    if n < 0:
+        return None
+    if n < 2:
+        return 1
+    return n * factorial_function(n - 1)
+
+def fib(n):
+    if n < 1:
+         return None
+    if n < 3:
+        return 1
+
+    elem_1 = elem_2 = 1
+    the_sum = 0
+    for i in range(3, n + 1):
+        the_sum = elem_1 + elem_2
+        elem_1, elem_2 = elem_2, the_sum
+    return the_sum
+
+
+for n in range(1, 10):
+    print(n, "->", fib(n))
+# Recursive implementation of the factorial function.
+
+def factorial(n):
+    if n == 1:    # The base case (termination condition.)
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+print(factorial(4)) # 4 * 3 * 2 * 1 = 24
+
+def factorial(n):
+    return n * factorial(n - 1)
+
+
+print(factorial(4)) # The factorial function has no termination condition (no base case) so Python will raise an exception (RecursionError: maximum recursion depth exceeded)
+
+def fun(a):
+    if a > 30:
+        return 3
+    else:
+        return a + fun(a + 3)
+
+
+print(fun(25)) # output: 56
+
+#  Tuples and dictionaries
+tuple_1 = (1, 2, 4, 8)
+tuple_2 = 1., .5, .25, .125
+print(tuple_1, tuple_2)
+
+my_tuple = (1, 10, 100, 1000)
+
+print(my_tuple[0])
+print(my_tuple[-1])
+print(my_tuple[1:])
+print(my_tuple[:-2])  # (1, 10)
+
+for elem in my_tuple:
+    print(elem)
+
+print("""
+What else can tuples do for you?
+the len() function accepts tuples, and returns the number of elements contained inside;
+the + operator can join tuples together (we've shown you this already)
+the * operator can multiply tuples, just like lists;
+the in and not in operators work in the same way as in lists.
+""")
+
+my_tuple = (1, 10, 100)
+
+t1 = my_tuple + (1000, 10000)
+t2 = my_tuple * 3
+
+print(len(t2))
+print(t1)
+print(t2)
+print(10 in my_tuple)
+print(-10 not in my_tuple)
+
+var = 123
+
+t1 = (1,)
+t2 = (2,)
+t3 = (3, var)
+
+t1, t2, t3 = t2, t3, t1
+
+print(t1, t2, t3)
+
+print("How to make a dictionary")
+dictionary = {"cat": "chat", "dog": "chien", "horse": "cheval"}
+phone_numbers = {'boss': 5551234567, 'Suzy': 22657854310}
+empty_dictionary = {}
+
+print(dictionary)
+print(phone_numbers)
+print(empty_dictionary)
+
+print(dictionary['cat'])
+print(phone_numbers['Suzy'])
+
+print(phone_numbers['president'])
+
+dictionary = {"cat": "chat", "dog": "chien", "horse": "cheval"}
+words = ['cat', 'lion', 'horse']
+
+for word in words:
+    if word in dictionary:
+        print(word, "->", dictionary[word])
+    else:
+        print(word, "is not in dictionary")
+
+# Example 1:
+dictionary = {
+    "cat": "chat",
+    "dog": "chien",
+    "horse": "cheval"
+}
+# Example 2:
+phone_numbers = {'boss': 5551234567,
+                 'Suzy': 22657854310
+                 }
+
+print("The following code safely searches for some French words:")
+dictionary = {"cat": "chat", "dog": "chien", "horse": "cheval"}
+words = ['cat', 'lion', 'horse']
+
+for word in words:
+    if word in dictionary:
+        print(word, "->", dictionary[word])
+    else:
+        print(word, "is not in dictionary")
+
+# code optimization for dictionary
+# Example 1:
+dictionary = {
+    "cat": "chat",
+    "dog": "chien",
+    "horse": "cheval"
+}
+# Example 2:
+phone_numbers = {'boss': 5551234567,
+                 'Suzy': 22657854310
+                 }
+
+# This kind of formatting is called a hanging indent.
+print("""Can dictionaries be browsed using the for loop, like lists or tuples?
+
+No and yes.
+
+No, because a dictionary is not a sequence type − the for loop is useless with it.
+
+Yes, because there are simple and very effective tools that can adapt any dictionary to the for loop requirements (in other words, building an intermediate link between the dictionary and a temporary sequence entity).
+
+The first of them is a method named keys(), possessed by each dictionary. The method returns an iterable object consisting of all the keys gathered within the dictionary. Having a group of keys enables you to access the whole dictionary in an easy and handy way.""")
+
+dictionary = {"cat": "chat", "dog": "chien", "horse": "cheval"}
+
+for key in dictionary.keys():
+    print(key, "->", dictionary[key])
+
 
 
 
